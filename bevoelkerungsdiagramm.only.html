@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Alexander Henkes, geographie-im-unterricht.de">
+    <meta name="description" content="population charts generator, written in HTML and JS">
+    <meta name="keywords" content="geography, Geographie, population charts, demography, Bevölkerungsdiagramme, Demographie">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+    <!--Deutsch: Der Autor dieses Projekts ist Alexander Henkes. Alle Rechte am Code vorbehalten. Dieser darf ausschließlich unter geographie-im-unterricht.de und dem entsprechenden  GitHub repository "alexander-henkes/bevoelkerungsdiagramm.generator" aufgeführt werden. Es kommt chart.js zur Anwendung: https://github.com/chartjs/Chart.js
+    Die mithilfe der Applikation erzeugten Bevölkerungsdiagramme sind lizensiert unter der Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 4.0 International (CC BY-NC-SA 4.0) Lizenz. Bitte beachten Sie zwecks Weiterverwendung die dargestellten Lizenzbedingungen: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de-->
+      
+    <!--English: The author of this project is Alexander Henkes. All rights to the code reserved. This may only be visible under geographie-im-unterricht.de and the corresponding GitHub repository "alexander-henkes/bevoelkerungsdiagramm.generator". chart.js is used: https://github.com/chartjs/Chart.js
+    The generated population charts using the application are licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License. For further use, please note the license conditions shown: https://creativecommons.org/licenses/by-nc-sa/4.0/-->
+      
+<title>Bevölkerungsdiagramm-Generator</title>
+  </head>
+
+<body>
+<h2 align = "left">Allgemeine Informationen</h2><br>
+<table class="table">
+    <tr>
+      <th align = "right">Land/Stadt:&nbsp;</th>
+      <td><input type="string" class="information" id="place" placeholder=" Deutschland"/></td>
+    </tr>
+    <tr>
+      <th align = "right">Jahr:&nbsp;</th>
+      <td><input type="" class="information" id="year" placeholder=" 2020"/></td>
+    </tr>
+    <tr>
+    <th align = "right">Einwohner&nbsp;(total):&nbsp;</th>
+      <td><input type="" class="information" id="population" placeholder=" Gesamteinwohnerzahl"/></td>
+    </tr>
+    <tr>
+    <th align = "right">Einheit:&nbsp;</th>
+      <td><input type="" class="information" id="unit" placeholder=" bspw. % oder Mio."/></td>
+    </tr>
+</table>
+<br><br>
+<h2 align = "left">Männer</h2><br>
+<table class="table">
+  <tbody>
+    <tr>
+      <th align = "right">≤ 5:&nbsp;</th>
+      <td><input type="number" class="male" id="male1" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">6–10:&nbsp;</th>
+      <td><input type="number" class="male" id="male2" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">11–15:&nbsp;</th>
+      <td><input type="number" class="male" id="male3" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">16–20:&nbsp;</th>
+      <td><input type="number" class="male" id="male4" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">21–25:&nbsp;</th>
+      <td><input type="number" class="male" id="male5" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">26–30:&nbsp;</th>
+      <td><input type="number" class="male" id="male6" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">31–35:&nbsp;</th>
+      <td><input type="number" class="male" id="male7" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">36–40:&nbsp;</th>
+      <td><input type="number" class="male" id="male8" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">41–45:&nbsp;</th>
+      <td><input type="number" class="male" id="male9" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">46–50:&nbsp;</th>
+      <td><input type="number" class="male" id="male10" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">51–55:&nbsp;</th>
+      <td><input type="number" class="male" id="male11" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">56–60:&nbsp;</th>
+      <td><input type="number" class="male" id="male12" placeholder="beliebige Einheit"/></td>
+    </tr>
+     <tr>
+      <th align = "right">61–65:&nbsp;</th>
+      <td><input type="number" class="male" id="male13" placeholder="beliebige Einheit"/></td>
+    </tr>     
+     <tr>
+      <th align = "right">66–70:&nbsp;</th>
+      <td><input type="number" class="male" id="male14" placeholder="beliebige Einheit"/></td>
+    </tr>     
+     <tr>
+      <th align = "right">71–75:&nbsp;</th>
+      <td><input type="number" class="male" id="male15" placeholder="beliebige Einheit"/></td>
+    </tr>     
+    <tr>
+      <th align = "right">76–80:&nbsp;</th>
+      <td><input type="number" class="male" id="male16" placeholder="beliebige Einheit"/></td>
+    </tr>      
+    <tr>
+      <th align = "right">81–85:&nbsp;</th>
+      <td><input type="number" class="male" id="male17" placeholder="beliebige Einheit"/></td>
+    </tr>      
+     <tr>
+      <th align = "right">86–90:&nbsp;</th>
+      <td><input type="number" class="male" id="male18" placeholder="beliebige Einheit"/></td>
+    </tr>    
+     <tr>
+      <th align = "right">91–95:&nbsp;</th>
+      <td><input type="number" class="male" id="male19" placeholder="beliebige Einheit"/></td>
+    </tr>           
+     <tr>
+      <th align = "right">≥ 96:&nbsp;</th>
+      <td><input type="number" class="male" id="male20" placeholder="beliebige Einheit"/></td>
+    </tr>           
+      
+  </tbody>
+</table>
+<br><br>
+<h2 align = "left">Frauen</h2><br>
+<table class="table">
+  <tbody>
+    <tr>
+      <th align = "right">≤ 5:&nbsp;</th>
+      <td><input type="number" class="female" id="female1" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">6–10:&nbsp;</th>
+      <td><input type="number" class="female" id="female2" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">11–15:&nbsp;</th>
+      <td><input type="number" class="female" id="female3" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">16–20:&nbsp;</th>
+      <td><input type="number" class="female" id="female4" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">21–25:&nbsp;</th>
+      <td><input type="number" class="female" id="female5" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">26–30:&nbsp;</th>
+      <td><input type="number" class="female" id="female6" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">31–35:&nbsp;</th>
+      <td><input type="number" class="female" id="female7" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">36–40:&nbsp;</th>
+      <td><input type="number" class="female" id="female8" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">41–45:&nbsp;</th>
+      <td><input type="number" class="female" id="female9" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">46–50:&nbsp;</th>
+      <td><input type="number" class="female" id="female10" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">51–55:&nbsp;</th>
+      <td><input type="number" class="female" id="female11" placeholder="beliebige Einheit"/></td>
+    </tr>
+    <tr>
+      <th align = "right">56–60:&nbsp;</th>
+      <td><input type="number" class="female" id="female12" placeholder="beliebige Einheit"/></td>
+    </tr>
+     <tr>
+      <th align = "right">61–65:&nbsp;</th>
+      <td><input type="number" class="female" id="female13" placeholder="beliebige Einheit"/></td>
+    </tr>     
+     <tr>
+      <th align = "right">66–70:&nbsp;</th>
+      <td><input type="number" class="female" id="female14" placeholder="beliebige Einheit"/></td>
+    </tr>     
+     <tr>
+      <th align = "right">71–75:&nbsp;</th>
+      <td><input type="number" class="female" id="female15" placeholder="beliebige Einheit"/></td>
+    </tr>     
+    <tr>
+      <th align = "right">76–80:&nbsp;</th>
+      <td><input type="number" class="female" id="female16" placeholder="beliebige Einheit"/></td>
+    </tr>      
+    <tr>
+      <th align = "right">81–85:&nbsp;</th>
+      <td><input type="number" class="female" id="female17" placeholder="beliebige Einheit"/></td>
+    </tr>      
+     <tr>
+      <th align = "right">86–90:&nbsp;</th>
+      <td><input type="number" class="female" id="female18" placeholder="beliebige Einheit"/></td>
+    </tr>    
+     <tr>
+      <th align = "right">91–95:&nbsp;</th>
+      <td><input type="number" class="female" id="female19" placeholder="beliebige Einheit"/></td>
+    </tr>           
+     <tr>
+      <th align = "right">≥ 96:&nbsp;</th>
+      <td><input type="number" class="female" id="female20" placeholder="beliebige Einheit"/></td>
+    </tr>     
+  </tbody>
+</table> 
+<br>      
+<output hidden id="highMale">0</output> 
+<output hidden id="highFemale">0</output> 
+
+<div class="chartBox">
+  <canvas id="populationChart"></canvas>
+</div>
+
+
+<input align="left" id="create_populationChart()" type="button" value=" Bevölkerungsdiagramm erstellen " onclick="maxMale();maxFemale();create_populationChart()"/><br><br>
+<input align="left" id="reload_populationChart(()" type="button" value=" Bevölkerungsdiagramm zurücksetzen " onclick="window.location.href=window.location.href"/><br><br> 
+<input align="left" id="reload_populationChart()" type="button" value=" Herunterladen " onclick="download()"/><br>  
+  </body>
+</html>
