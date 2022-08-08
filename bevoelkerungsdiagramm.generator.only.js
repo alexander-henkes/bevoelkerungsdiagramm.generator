@@ -75,13 +75,18 @@ function create_populationChart() {
   let maxMaleRounded = Math.ceil(maxMale / 5) * 5;
     let maxFemaleRounded = Math.ceil(maxFemale / 5) * 5;
     
-    if(maxMaleRounded > maxFemaleRounded) {
-        maxFemaleRounded = maxMaleRounded;
+    if(maxMaleRounded > maxFemaleRounded && maxMaleRounded < 100 || maxFemaleRounded < 100) {
+        maxFemaleRounded = Math.ceil(maxMaleRounded / 50) * 50;
     }
-    if(maxFemaleRounded > maxMaleRounded) {
-        maxMaleRounded = maxFemaleRounded;
+    if(maxFemaleRounded > maxMaleRounded && maxMaleRounded < 100 || maxFemaleRounded < 100) {
+        maxMaleRounded = Math.ceil(maxFemaleRounded / 50) * 50;
     }
-
+    if(maxMaleRounded > maxFemaleRounded && maxMaleRounded > 100 || maxFemaleRounded > 100) {
+        maxFemaleRounded = Math.ceil(maxMaleRounded / 100) * 100;
+    }
+    if(maxFemaleRounded > maxMaleRounded && maxMaleRounded < 100 || maxFemaleRounded > 100) {
+        maxMaleRounded = Math.ceil(maxFemaleRounded / 100) * 100;
+    }
 // add white background
 var whitebackgroundColor = {
   beforeDraw: function(chart, args, options) {
@@ -210,19 +215,29 @@ var backgroundColor = {
                 return gridColor, gridColor2;
                 }
             }, 
-         min: (maxMaleRounded * -1),
+          min: (maxMaleRounded * -1),
           max: maxFemaleRounded,
           stacked: true,
           ticks: {
-              //stepSize: 5,
+                color: 'black',
+                //font: {
+                //size: 15
+                //},
               callback: function(value, index, values) {
                 return Math.abs(value);
                 }
             }
         },
         y: {
-          beginAtZero: true,
+           // stepsize: 50,
+          // grid: {
+          // color: 'black'
+          // },
+          //beginAtZero: true,
           stacked: true,
+          ticks: {
+                color: 'black',
+                },
           }
       }
     },
