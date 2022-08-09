@@ -87,6 +87,13 @@ function create_populationChart() {
     if(maxFemaleRounded > maxMaleRounded && maxMaleRounded < 100 || maxFemaleRounded > 100) {
         maxMaleRounded = Math.ceil(maxFemaleRounded / 100) * 100;
     }
+    if(maxMaleRounded > maxFemaleRounded && maxMaleRounded > 1000 || maxFemaleRounded > 1000) {
+        maxFemaleRounded = Math.ceil(maxMaleRounded / 1000) * 1000;
+    }
+    if(maxFemaleRounded > maxMaleRounded && maxMaleRounded < 100 || maxFemaleRounded > 1000) {
+        maxMaleRounded = Math.ceil(maxFemaleRounded / 1000) * 1000;
+    }
+
 // add white background
 var whitebackgroundColor = {
   beforeDraw: function(chart, args, options) {
@@ -151,6 +158,23 @@ var backgroundColor = {
     ctx.fillStyle = "black";
     ctx.fillText(["in ",'',[unit]].join(''), 480, 447.5);
     }, 1500);
+// add sex
+  setTimeout(function writeText(){
+    var c = document.getElementById("populationChart");
+    var ctx = c.getContext("2d");
+    ctx.font = "15px Roboto";
+    ctx.textAlign = "center";
+    ctx.fillStyle = "black";
+    ctx.fillText("Männer", 95, 86);
+    }, 1500);
+  setTimeout(function writeText(){
+    var c = document.getElementById("populationChart");
+    var ctx = c.getContext("2d");
+    ctx.font = "15px Roboto";
+    ctx.textAlign = "center";
+    ctx.fillStyle = "black";
+    ctx.fillText("Frauen", 443, 86);
+    }, 1500);
 // add signature
   setTimeout(function writeText(){
     var c = document.getElementById("populationChart");
@@ -211,7 +235,7 @@ var backgroundColor = {
                 const zeroLine = ctx.tick.value;
                 const notzeroLine = ctx.tick.value;
                 const gridColor = zeroLine === 0 ? '#666' : '#ccc' ;
-                const gridColor2 = notzeroLine > -1000 ? '#666' : '#ccc' ;
+                const gridColor2 = notzeroLine > -100000000000000000 ? '#666' : '#ccc' ;
                 return gridColor, gridColor2;
                 }
             }, 
